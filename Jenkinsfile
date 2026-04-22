@@ -32,11 +32,7 @@ node {
             sh "./mvnw -ntp verify -P-webapp -Pprod -DskipTests"
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
-        stage('quality analysis') {
-            withSonarQubeEnv('sonar') {
-                sh "./mvnw -ntp initialize sonar:sonar"
-            }
-        }
+        
     }
 
     def dockerImage
